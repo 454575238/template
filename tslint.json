@@ -1,11 +1,13 @@
 {
     "extends": [
         "tslint:recommended",
-        "tslint-react"
+        "tslint-react",
+        "prettier"
     ],
     "rulesDirectory": [
         "node_modules/tslint-eslint-rules/dist/rules"
     ],
+    "plugin": ["prettier"],
     "rules": {
         "jsx-no-multiline-js": false,
         "jsx-alignment": false,

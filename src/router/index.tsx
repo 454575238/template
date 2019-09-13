@@ -13,8 +13,8 @@ const Router = () => (
     </header>
     <main>
       <Switch>
-        <Route path="/" exact component={Home}/>
-        <Route path="/count" exact component={Count}/>
+        <Route path="/" exact component={Home} />
+        <Route path="/count" exact component={Count} />
       </Switch>
     </main>
   </div>

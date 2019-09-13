@@ -1,13 +1,12 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import Layout from './router'
+import ReactRouter from './router'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+/* eslint-disable */
+type ReactRouter = typeof ReactRouter
 
-type reactRouter = typeof Layout
-
-const renderRouter = (Router: reactRouter) => {
-
+const renderRouter = (Router: ReactRouter) => {
   const App = () => {
     return (
       <AppContainer>
@@ -18,18 +17,15 @@ const renderRouter = (Router: reactRouter) => {
     )
   }
 
-  ReactDOM.render(
-    <App />,
-     document.getElementById('app'),
-  )
+  ReactDOM.render(<App />, document.getElementById('app'))
 }
-
+// @ts-ignore
 if (module.hot) {
-
+  // @ts-ignore
   module.hot.accept('router', () => {
     // Get the updated code
     renderRouter(require('./router').default)
   })
 }
 
-renderRouter(Layout)
+renderRouter(ReactRouter)
