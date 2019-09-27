@@ -55,6 +55,7 @@
     "react-dom": "npm:@hot-loader/react-dom",
     "react-hot-loader": "^4.11.0",
     "style-loader": "^0.23.1",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.0.0",
     "url-loader": "^2.0.0",

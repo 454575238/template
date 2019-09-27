@@ -1,22 +1,21 @@
 {
   "presets": [
-
-      ["@babel/preset-env", 
+    [
+      "@babel/preset-env",
       {
         "useBuiltIns": "usage",
         "corejs": 3,
         "modules": false,
         "targets": {
           "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-        },
-      },],
-      "@babel/preset-react",
-    
+        }
+      }
+    ],
+    "@babel/preset-react"
   ],
   "plugins": [
     "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties",
     "dynamic-import-webpack"
   ]
-  
 }
