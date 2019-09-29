@@ -1,11 +1,10 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import ReactRouter from './router'
+import ReactRouter from '@/router'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 /* eslint-disable */
 type ReactRouter = typeof ReactRouter
-
 const renderRouter = (Router: ReactRouter) => {
   const App = () => {
     return (
@@ -20,7 +19,7 @@ const renderRouter = (Router: ReactRouter) => {
   ReactDOM.render(<App />, document.getElementById('app'))
 }
 // @ts-ignore
-if (module.hot) {
+if (module && module.hot) {
   // @ts-ignore
   module.hot.accept('router', () => {
     // Get the updated code

@@ -1,29 +1,22 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
-const HappyPack = require('happypack')
-const os = require('os')
-const happyPackThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
   entry: {
-    app: './src/main.tsx'
+    app: path.resolve(__dirname, '../../src/main.tsx')
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js',
-    publicPath: './'
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.tsx', 'ts'],
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      pages: path.resolve(__dirname, 'src/pages'),
-      router: path.resolve(__dirname, 'src/router')
+      '@': path.resolve(__dirname, '../../src'),
+      pages: path.resolve(__dirname, '../../src/pages'),
+      router: path.resolve(__dirname, '../../src/router')
     }
   },
   module: {
@@ -33,7 +26,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'happypack/loader?id=busongBabel'
+            loader: 'babel-loader'
           },
           {
             loader: 'ts-loader',
@@ -85,35 +78,16 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: path.resolve(__dirname, '../../src/index.html'),
       filename: 'index.html'
     }),
-    new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    // new MiniCssExtractPlugin({
-    //   filename: "[name][hash:8].css",
-    //   chunkFilename: "[name][hash:8].css"
-    // }),
+
     new webpack.DefinePlugin({
       'process.env': {
         VUEP_BASE_URL: JSON.stringify('http://localhost:9000')
       }
-    }),
-    new HappyPack({
-      id: 'busongBabel',
-      loaders: ['babel-loader?cacheDirectory'],
-      threadPool: happyPackThreadPool
     })
   ],
-  devServer: {
-    hot: true,
-    contentBase: path.resolve(__dirname, '/dist'),
-    host: '0.0.0.0',
-    port: 3012,
-    historyApiFallback: true,
-    inline: true,
-    publicPath: '/'
-  },
   optimization: {
     usedExports: true,
     splitChunks: {

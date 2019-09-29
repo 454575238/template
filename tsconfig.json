@@ -2,15 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@root/*": [
-        "src/*"
-      ],
+      "@/*": ["src/*"]
     },
-    "lib": [
-      "es6",
-      "es7",
-      "dom"
-    ],
+    "lib": ["es6", "es7", "dom"],
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
@@ -20,7 +14,5 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
