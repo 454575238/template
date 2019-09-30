@@ -17,8 +17,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       // 打包 node_modules里的代码
       chunks: 'all'
     },
-    runtimeChunk: true, // 打包 runtime 代码
-    minimizer: [new OptimizeCssAssetsPlugin({})]
+    runtimeChunk: true // 打包 runtime 代码
   },
   module: {
     rules: [
@@ -37,6 +36,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css'
     }),
+    new OptimizeCssAssetsPlugin(),
     new CleanWebpackPlugin()
   ]
 })

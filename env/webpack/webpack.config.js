@@ -1,6 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const resolve = require('./utils')
+const HappyPack = require('happypack')
+const os = require('os')
+const happyPackThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 module.exports = {
   entry: {
@@ -16,7 +19,8 @@ module.exports = {
     alias: {
       '@': resolve('src'),
       pages: resolve('src/pages'),
-      router: resolve('src/router')
+      router: resolve('src/router'),
+      components: resolve('src/components')
     }
   },
   module: {
@@ -26,7 +30,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'happypack/loader?id=busongBabel'
           }
         ]
       },
@@ -77,6 +81,11 @@ module.exports = {
         VUEP_BASE_URL: JSON.stringify('http://localhost:9000'),
         NODE_ENV: process.env.NODE_ENV
       }
+    }),
+    new HappyPack({
+      id: 'busongBabel',
+      loaders: ['babel-loader?cacheDirectory'],
+      threadPool: happyPackThreadPool
     })
   ],
   optimization: {

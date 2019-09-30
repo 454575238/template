@@ -1,9 +1,7 @@
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.config')
 const resolve = require('./utils')
-const HappyPack = require('happypack')
-const os = require('os')
-const happyPackThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
+
 const webpack = require('webpack')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const devConf = {
@@ -21,19 +19,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     inline: true,
     quiet: true
   },
-  module: {
-    rules: [
-      {
-        test: /\.(tsx|ts|js)?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'happypack/loader?id=busongBabel'
-          }
-        ]
-      }
-    ]
-  },
   devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -44,11 +29,6 @@ const webpackConfig = merge(baseWebpackConfig, {
         ]
       },
       clearConsole: true
-    }),
-    new HappyPack({
-      id: 'busongBabel',
-      loaders: ['babel-loader?cacheDirectory'],
-      threadPool: happyPackThreadPool
     })
   ]
 })
