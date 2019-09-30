@@ -1,7 +1,7 @@
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.config')
 const resolve = require('./utils')
-
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const webpack = require('webpack')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const devConf = {
@@ -17,9 +17,30 @@ const webpackConfig = merge(baseWebpackConfig, {
     contentBase: resolve('dist'),
     historyApiFallback: true,
     inline: true,
-    quiet: true
+    quiet: true,
+    overlay: true
   },
   devtool: 'cheap-module-source-map',
+  optimization: {
+    minimizer: [
+      new ParallelUglifyPlugin({
+        // 多进程压缩
+        cacheDir: '.cache/',
+        uglifyJS: {
+          output: {
+            comments: false,
+            beautify: false
+          },
+          compress: {
+            warnings: false,
+            drop_console: true,
+            collapse_vars: true,
+            reduce_vars: true
+          }
+        }
+      })
+    ]
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new FriendlyErrorsWebpackPlugin({

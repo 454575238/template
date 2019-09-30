@@ -78,6 +78,7 @@
     "react-router-dom": "^5.0.1",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "webpack-parallel-uglify-plugin": "^1.1.2"
   }
 }
