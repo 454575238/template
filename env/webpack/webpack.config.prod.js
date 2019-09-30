@@ -8,7 +8,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, '../../dist'),
-    filename: '[name].[contenthash:8].js',
+    filename: 'js/[name].[contenthash:8].js',
     publicPath: './'
   },
   optimization: {
@@ -18,6 +18,19 @@ const webpackConfig = merge(baseWebpackConfig, {
     },
     runtimeChunk: true, // 打包 runtime 代码
     minimizer: [new OptimizeCssAssetsPlugin({})]
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(less|css)?$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
+        ]
+      }
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({

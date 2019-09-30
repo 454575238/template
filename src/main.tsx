@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import ReactRouter from '@/router'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import './app.less'
 /* eslint-disable */
 type ReactRouter = typeof ReactRouter
 const renderRouter = (Router: ReactRouter) => {
