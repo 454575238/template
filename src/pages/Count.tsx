@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import './Count.less'
 
+interface ICount {
+  name: string
+}
+
 class Count extends Component {
   render() {
     return (

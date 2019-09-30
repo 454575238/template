@@ -10,7 +10,7 @@ export enum RestFulMethod {
   // patch
   PATCH = 'PATCH',
   // put
-  PUT = 'PUT'
+  PUT = 'PUT',
 }
 
 export enum RestFulContentType {
@@ -21,7 +21,7 @@ export enum RestFulContentType {
   // application/json
   JSON = 'application/json;charset=utf-8',
   // muilt 一般附件上传使用
-  MUILT = ''
+  MUILT = '',
 }
 
 export default class RestFul {}

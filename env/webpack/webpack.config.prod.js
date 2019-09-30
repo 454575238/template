@@ -2,12 +2,13 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const path = require('path')
+const resolve = require('./utils')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, '../../dist'),
+    path: resolve('dist'),
     filename: 'js/[name].[contenthash:8].js',
     publicPath: './'
   },
@@ -34,7 +35,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[hash:8].css'
+      filename: 'css/[name].[contenthash:8].css'
     }),
     new CleanWebpackPlugin()
   ]

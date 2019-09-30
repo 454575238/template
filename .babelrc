@@ -1,5 +1,6 @@
 {
   "presets": [
+    "@babel/preset-typescript",
     [
       "@babel/preset-env",
       {
@@ -14,8 +15,10 @@
     "@babel/preset-react"
   ],
   "plugins": [
+    ["@babel/plugin-transform-typescript", { "allowNamespaces": true }],
     "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties",
+
     "dynamic-import-webpack"
   ]
 }

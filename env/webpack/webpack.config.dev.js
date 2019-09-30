@@ -1,6 +1,6 @@
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.config')
-const path = require('path')
+const resolve = require('./utils')
 const HappyPack = require('happypack')
 const os = require('os')
 const happyPackThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
@@ -16,13 +16,11 @@ const webpackConfig = merge(baseWebpackConfig, {
   devServer: {
     ...devConf,
     hot: true,
-    contentBase: path.resolve(__dirname, '../../dist'),
+    contentBase: resolve('dist'),
     historyApiFallback: true,
     inline: true,
-    open: true,
     quiet: true
   },
-  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [
       {
@@ -31,35 +29,26 @@ const webpackConfig = merge(baseWebpackConfig, {
         use: [
           {
             loader: 'happypack/loader?id=busongBabel'
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-              compilerOptions: {
-                module: 'es2015',
-                lib: ['es6', 'es7', 'dom']
-              }
-            }
           }
         ]
       }
     ]
   },
+  devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: [
+          `你好这里是你的程序地址 : http://${devConf.host}:${devConf.port}`
+        ]
+      },
+      clearConsole: true
+    }),
     new HappyPack({
       id: 'busongBabel',
       loaders: ['babel-loader?cacheDirectory'],
       threadPool: happyPackThreadPool
-    }),
-    new FriendlyErrorsWebpackPlugin({
-      compilationSuccessInfo: {
-        messages: [
-          `Your application is running here: http://${devConf.host}:${devConf.port}`
-        ]
-      },
-      clearConsole: true
     })
   ]
 })

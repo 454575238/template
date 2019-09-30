@@ -1,22 +1,22 @@
-const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const resolve = require('./utils')
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../../src/main.tsx')
+    app: resolve('src/main.tsx')
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: resolve('dist'),
     filename: 'bundle.js',
     publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.tsx', 'ts'],
     alias: {
-      '@': path.resolve(__dirname, '../../src'),
-      pages: path.resolve(__dirname, '../../src/pages'),
-      router: path.resolve(__dirname, '../../src/router')
+      '@': resolve('src'),
+      pages: resolve('src/pages'),
+      router: resolve('src/router')
     }
   },
   module: {
@@ -27,16 +27,6 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader'
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-              compilerOptions: {
-                module: 'es2015',
-                lib: ['es6', 'es7', 'dom']
-              }
-            }
           }
         ]
       },
@@ -78,13 +68,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../../src/index.html'),
+      template: resolve('src/index.html'),
       filename: 'index.html'
     }),
 
     new webpack.DefinePlugin({
       'process.env': {
-        VUEP_BASE_URL: JSON.stringify('http://localhost:9000')
+        VUEP_BASE_URL: JSON.stringify('http://localhost:9000'),
+        NODE_ENV: process.env.NODE_ENV
       }
     })
   ],
