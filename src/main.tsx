@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import ReactRouter from '@/router/index'
+import ReactRouter from 'router/index'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import './app.less'

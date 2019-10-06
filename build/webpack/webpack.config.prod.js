@@ -10,14 +10,14 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: resolve('dist'),
     filename: 'js/[name].[contenthash:8].js',
-    publicPath: './'
+    publicPath: '/',
   },
   optimization: {
     splitChunks: {
       // 打包 node_modules里的代码
-      chunks: 'all'
+      chunks: 'all',
     },
-    runtimeChunk: true // 打包 runtime 代码
+    runtimeChunk: true, // 打包 runtime 代码
   },
   module: {
     rules: [
@@ -27,18 +27,18 @@ const webpackConfig = merge(baseWebpackConfig, {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
-          'less-loader'
-        ]
-      }
-    ]
+          'less-loader',
+        ],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css'
+      filename: 'css/[name].[contenthash:8].css',
     }),
     new OptimizeCssAssetsPlugin(),
-    new CleanWebpackPlugin()
-  ]
+    new CleanWebpackPlugin(),
+  ],
 })
 
 module.exports = webpackConfig
