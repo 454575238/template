@@ -8,6 +8,13 @@ const happyPackThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 const chalk = require('chalk')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 
+const createHappyPlugin = (id, loaders) =>
+  new HappyPack({
+    id: id,
+    loaders: loaders,
+    threadPool: happyPackThreadPool,
+  })
+
 module.exports = {
   entry: {
     app: resolve('src/main.tsx'),
@@ -17,18 +24,11 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
-  externals: {
-    react: 'React',
-    'react-router': 'react-router',
-    'react-router-dom': 'react-router-dom',
-    lodash: 'lodash',
-  },
   resolve: {
     extensions: ['.js', '.tsx', 'ts'],
     alias: {
       '@': resolve('src'),
       pages: resolve('src/pages'),
-      router: resolve('src/router'),
       components: resolve('src/components'),
     },
   },
@@ -39,19 +39,15 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'happypack/loader?id=busongBabel',
+            loader: 'happypack/loader?id=happy-babel',
           },
         ],
       },
       {
         test: /\.(less|css)?$/,
-        use: [
-          // MiniCssExtractPlugin.loader,
-          'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'less-loader',
-        ],
+        use: {
+          loader: 'happypack/loader?id=happy-css',
+        },
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)?$/,
@@ -84,10 +80,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolve('src/index.html'),
       filename: 'index.html',
+      minify: {
+        removeAttributeQuotes: true, //压缩 去掉引号
+      },
     }),
-    new webpack.DllReferencePlugin({
-      manifest: require('./dll/react.dll.manifest.json'),
-    }),
+
     new webpack.DefinePlugin({
       'process.env': {
         VUEP_BASE_URL: JSON.stringify('http://localhost:9000'),
@@ -98,11 +95,24 @@ module.exports = {
       title: '编译完成',
       suppressSuccess: true,
     }),
-    new HappyPack({
-      id: 'busongBabel',
-      loaders: ['babel-loader?cacheDirectory'],
-      threadPool: happyPackThreadPool,
-    }),
+
+    createHappyPlugin('happy-babel', [
+      {
+        loader: 'babel-loader',
+        options: {
+          babelrc: true,
+          cacheDirectory: true, // 启用缓存
+        },
+      },
+    ]),
+
+    createHappyPlugin('happy-css', [
+      'style-loader',
+      'css-loader',
+      'postcss-loader',
+      'less-loader',
+    ]),
+
     new ProgressBarPlugin({
       format:
         '  build [:bar] ' +

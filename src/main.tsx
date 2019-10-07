@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import ReactRouter from 'router/index'
+import ReactRouter from './router/index'
 import ReactDOM from 'react-dom'
+
 import { AppContainer } from 'react-hot-loader'
 import './app.less'
 
@@ -22,7 +23,7 @@ const renderRouter = (Router: ReactRouter) => {
 // @ts-ignore
 if (module && module.hot) {
   // @ts-ignore
-  module.hot.accept('router', () => {
+  module.hot.accept('./router', () => {
     // Get the updated code
     renderRouter(require('./router/index').default)
   })

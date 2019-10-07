@@ -7,8 +7,8 @@ interface IState {
 
 class Home extends React.Component<IState> {
   state = {
-    home: 'home',
-    value: '222',
+    home: 'hom',
+    value: '213',
   }
 
   handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
