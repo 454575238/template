@@ -20,7 +20,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     quiet: true,
     overlay: true,
   },
-  devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   plugins: [
     new webpack.DllReferencePlugin({

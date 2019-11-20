@@ -11,6 +11,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     path: resolve('dist'),
     filename: 'js/[name].[contenthash:8].js',
     publicPath: './',
+    chunkFilename: 'js/[contenthash:8].chunk.js',
   },
   optimization: {
     splitChunks: {

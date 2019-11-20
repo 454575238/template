@@ -7821,6 +7821,13 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
+rxjs-hooks@^0.5.1:
+  version "0.5.1"
+  resolved "https://npm.xiguacity.cn/rxjs-hooks/-/rxjs-hooks-0.5.1.tgz#fecfa4f7d391841888ca210812fe383e41e49f1e"
+  integrity sha1-/s+k99ORhBiIyiEIEv44PkHknx4=
+  dependencies:
+    tslib "^1.9.3"
+
 rxjs@^6.3.3:
   version "6.5.3"
   resolved "https://npm.xiguacity.cn/rxjs/-/rxjs-6.5.3.tgz#510e26317f4db91a7eb1de77d9dd9ba0a4899a3a"
@@ -8630,7 +8637,7 @@ tslib@1.9.0:
   resolved "https://npm.xiguacity.cn/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
   integrity sha1-43qG/ajLuvI6BX9HPJ9Nxk5fwug=
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.10.0"
   resolved "https://npm.xiguacity.cn/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha1-w8GflZc/sKYpc/sJ2Q2WHuQ+XIo=

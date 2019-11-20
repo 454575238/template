@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 
 import { AppContainer } from 'react-hot-loader'
 import './app.less'
+import 'antd/dist/antd.css'
 
 type ReactRouter = typeof ReactRouter
 const renderRouter = (Router: ReactRouter) => {

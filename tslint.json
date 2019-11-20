@@ -12,6 +12,8 @@
     "member-access": [true, "no-public"],
     "no-var-requires": false,
     "no-console": false,
+    "no-shadowed-variable": false,
+    "jsx-no-lambda": false,
     "object-literal-sort-keys": false,
     "whitespace": [false, "check-module"],
     "no-namespace": [true, "allow-declarations"],
