@@ -11,7 +11,7 @@ import axios from 'axios'
 //   render() {
 //     return <div>123</div>
 //   }
-}
+// }
 interface ICount {
   name: string
 }
@@ -23,7 +23,7 @@ class Count extends Component {
   render() {
     return (
       <div className="count-container">
-        <Child />
+        {/* <Child /> */}
         <DatePicker />
         <Button type="primary">Primary</Button>
         <Button>Default</Button>
