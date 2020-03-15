@@ -6,7 +6,9 @@ node_js: lts/*
 git:
   depth: 1
 # 安装
-install: yarn
+install: 
+- nvm install 10
+- yarn
 # 指定了缓存的内容，这里是yarn安装的东西，既node_modules
 cache: yarn
 # build
