@@ -4,6 +4,7 @@ import ReactRouter from './router/index'
 import ReactDOM from 'react-dom'
 
 import { AppContainer } from 'react-hot-loader'
+// import a from '@/utils'
 import './app.less'
 
 type ReactRouter = typeof ReactRouter

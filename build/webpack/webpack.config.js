@@ -25,7 +25,7 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.js', '.tsx', 'ts'],
+    extensions: ['.js', '.tsx', '.ts'],
     alias: {
       '@': resolve('src'),
       pages: resolve('src/pages'),

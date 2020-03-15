@@ -3,7 +3,9 @@ import { Link, Route, Switch } from 'react-router-dom'
 
 import Home from '@/pages/Home'
 import Count from '@/pages/Count'
-
+import { aixos } from '@/utils/utils'
+aixos.get(Home)
+console.log(aixos)
 const Router = () => (
   <div className="layout">
     <header>
