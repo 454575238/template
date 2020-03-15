@@ -3,7 +3,7 @@ node_js: stable
 
 # S: Build Lifecycle
 install:
-  - yarn install
+  - yarn
 
 
 #before_script:
