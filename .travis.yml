@@ -1,23 +1,33 @@
 language: node_js
 node_js: stable
-
-
-script:
-  - template-test-ci
-
-after_script:
-  - cd ./public
-  - git init
-  - git config user.name "lifengsofts"
-  - git config user.email "lifengsofts@gmail.com"
-  - git add .
-  - git commit -m "Update docs"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-# E: Build LifeCycle
+language: node_js
+node_js: 
+  - "10"
 
 branches:
   only:
     - master
+
+git:
+  quite: true
+  depth: 1
+  submodules: false
+
+cache: yarn
+
+install: yarn
+
+script: yarn build
+
 env:
  global:
    - GH_REF: github.com/454575238/template.git
+   
+deploy: 
+  provider: pages
+  keep-history: true
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  local-dir: ./dist/
+  on:
+    branch: master
