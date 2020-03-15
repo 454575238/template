@@ -27,5 +27,6 @@ deploy:
   committer_from_gh: true
   # 目标分支
   target_branch: master
+  local-dir: ./dist/
   on:
     branch: master
