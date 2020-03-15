@@ -26,7 +26,7 @@ deploy:
   # 使用GitHub的用户名和邮箱
   committer_from_gh: true
   # 目标分支
-  target_branch: master
+  target_branch: gh-pages
   local-dir: ./dist/
   on:
-    branch: master
+    branch: gh-pages
