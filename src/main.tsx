@@ -12,7 +12,7 @@ const renderRouter = (Router: ReactRouter) => {
   const App = () => {
     return (
       <AppContainer>
-        <BrowserRouter>
+        <BrowserRouter basename="/template">
           <Router />
         </BrowserRouter>
       </AppContainer>
