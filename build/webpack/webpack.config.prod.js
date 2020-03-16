@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const resolve = require('./utils')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-console.log('/<repository-name>/')
+
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   output: {
