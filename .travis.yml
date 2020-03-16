@@ -7,7 +7,6 @@ git:
   depth: 1
 # 安装
 install: 
-- nvm install 10
 - yarn
 # 指定了缓存的内容，这里是yarn安装的东西，既node_modules
 cache: yarn
@@ -19,14 +18,14 @@ deploy:
   provider: pages
   # Make sure you have skip_cleanup set to true, otherwise Travis CI will delete all the files created during the build,
   # which will probably delete what you are trying to upload.
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  cleanup: false
+  token: $GITHUB_TOKEN
   # 这里需要是true，否则会git push --force，把以前的记录覆盖了
   keep_history: true
   # 使用GitHub的用户名和邮箱
   committer_from_gh: true
   # 目标分支
   target_branch: gh-pages
-  local-dir: ./dist/
+  # local_dir: dist
   on:
-    branch: gh-pages
+    branch: master
