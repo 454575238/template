@@ -4,9 +4,9 @@ import ReactRouter from './router/index'
 import ReactDOM from 'react-dom'
 
 import { AppContainer } from 'react-hot-loader'
-// import a from '@/utils'
-import './app.less'
 
+import './app.less'
+console.log(123)
 type ReactRouter = typeof ReactRouter
 const renderRouter = (Router: ReactRouter) => {
   const App = () => {
