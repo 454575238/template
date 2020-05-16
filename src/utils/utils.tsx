@@ -11,7 +11,6 @@ function ajax(url: string, div: HTMLDivElement) {
     console.log('loading end')
     // render(<Loading loading={false} />, div)
   }, 1000)
-
 }
 
 class Axios {
@@ -19,14 +18,14 @@ class Axios {
     return new Axios().create(params)
   }
 
-  baseUrl: string = '/'
+  baseUrl = '/'
 
   create(params: IParams) {
     this.baseUrl = params.baseUrl
     return this
   }
 
-  get(com: any) {
+  get(com: unknown) {
     console.log('loading')
     const Load = React.createElement('div', { loading: false }, 235)
     const div = document.createElement('div')
@@ -38,15 +37,9 @@ class Axios {
 
 function Loading(props: any) {
   console.log(123)
-  return (
-    <>
-      {
-        props.loading && 23234
-      }
-    </>
-  )
+  return <>{props.loading && 23234}</>
 }
 
-export const aixos = Axios.create({
+export const axios = Axios.create({
   baseUrl: './hahah',
 })

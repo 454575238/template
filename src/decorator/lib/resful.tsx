@@ -1,4 +1,4 @@
-const RESFUL_PAYLOAD_INFO = Symbol('RESFUL_PAYLOAD_INFO')
+const RESTFUL_PAYLOAD_INFO = Symbol('RESTFUL_PAYLOAD_INFO')
 
 export enum RestFulMethod {
   // get
@@ -15,13 +15,13 @@ export enum RestFulMethod {
 
 export enum RestFulContentType {
   // application/x-www-form-urlencoded
-  URLENCODE = 'application/x-www-form-urlencoded',
+  URL_ENCODE = 'application/x-www-form-urlencoded',
   // multipart/form-data
-  FORMDATA = 'multipart/form-data',
+  FORM_DATA = 'multipart/form-data',
   // application/json
   JSON = 'application/json;charset=utf-8',
   // muilt 一般附件上传使用
-  MUILT = '',
+  MU_ILT = '',
 }
 
 export default class RestFul {}
