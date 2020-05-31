@@ -7239,18 +7239,6 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier-tslint@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/prettier-tslint/-/prettier-tslint-0.4.2.tgz#37dd009ad6a482ea8101f40cf70b777bc86f3438"
-  integrity sha512-urhX7U/F+fu8sztEs/Z7CxNS8PdEytEwGKhQaH5fxxCdRmHGT45FoClyDlcZrMk9cK/8JpX/asFmTOHtSGJfLg==
-  dependencies:
-    chalk "^2.4.0"
-    globby "^8.0.1"
-    ignore "^3.3.7"
-    require-relative "^0.8.7"
-    tslint "^5.9.1"
-    yargs "^11.0.0"
-
 prettier@^1.18.2:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
