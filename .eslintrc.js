@@ -50,6 +50,7 @@ module.exports = {
       { VariableDeclarator: 2, SwitchCase: 1 },
     ],
     '@typescript-eslint/no-unused-vars': 0,
+    '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/interface-name-prefix': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/no-triple-slash-reference': 0,

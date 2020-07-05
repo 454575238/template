@@ -1,3 +1,3 @@
-import RestFul from './lib/resful'
+import RestFul from './lib/restful'
 
 export { RestFul }

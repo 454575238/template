@@ -6,13 +6,11 @@ import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 
 import './app.less'
-console.log(123)
-type ReactRouter = typeof ReactRouter
-const renderRouter = (Router: ReactRouter) => {
+const renderRouter = (Router: () => JSX.Element) => {
   const App = () => {
     return (
       <AppContainer>
-        <BrowserRouter basename="/template">
+        <BrowserRouter basename="/">
           <Router />
         </BrowserRouter>
       </AppContainer>
@@ -25,7 +23,6 @@ const renderRouter = (Router: ReactRouter) => {
 if (module && module.hot) {
   // @ts-ignore
   module.hot.accept('./router', () => {
-    // Get the updated code
     renderRouter(require('./router/index').default)
   })
 }
