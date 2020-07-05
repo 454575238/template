@@ -1,22 +1,35 @@
 {
   "presets": [
-
-      ["@babel/preset-env", 
+    [
+      "@babel/preset-env",
       {
         "useBuiltIns": "usage",
-        "corejs": 3,
+        "corejs": {
+          "version": 3, 
+          "proposals": true
+        },
         "modules": false,
         "targets": {
           "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-        },
-      },],
-      "@babel/preset-react",
-    
+        }
+      }
+    ],
+    "@babel/preset-typescript",
+    "@babel/preset-react"
   ],
   "plugins": [
+    ["@babel/plugin-transform-typescript", { "allowNamespaces": true }],
     "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties",
-    "dynamic-import-webpack"
+
+    // "dynamic-import-webpack",
+    // [
+    //   "import",
+    //   {
+    //     "libraryName": "antd",
+    //     "libraryDirectory": "es",
+    //     "style": "css" // `style: true` 会加载 less 文件
+    //   }
+    // ]
   ]
-  
 }

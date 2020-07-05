@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
 
-import Home from '../pages/Home'
-import Count from '../pages/Count'
-
-console.log(process.env)
+import Home from '@/pages/Home'
+import Count from '@/pages/Count'
+import { axios } from '@/utils/utils'
+axios.get(Home)
 const Router = () => (
   <div className="layout">
     <header>
@@ -13,8 +13,8 @@ const Router = () => (
     </header>
     <main>
       <Switch>
-        <Route path="/" exact component={Home}/>
-        <Route path="/count" exact component={Count}/>
+        <Route path="/" exact component={Home} />
+        <Route path="/count" exact component={Count} />
       </Switch>
     </main>
   </div>

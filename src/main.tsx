@@ -1,35 +1,30 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import Layout from './router'
+import ReactRouter from './router/index'
 import ReactDOM from 'react-dom'
+
 import { AppContainer } from 'react-hot-loader'
 
-type reactRouter = typeof Layout
-
-const renderRouter = (Router: reactRouter) => {
-
+import './app.less'
+const renderRouter = (Router: () => JSX.Element) => {
   const App = () => {
     return (
       <AppContainer>
-        <BrowserRouter>
+        <BrowserRouter basename="/">
           <Router />
         </BrowserRouter>
       </AppContainer>
     )
   }
 
-  ReactDOM.render(
-    <App />,
-     document.getElementById('app'),
-  )
+  ReactDOM.render(<App />, document.getElementById('app'))
 }
-
-if (module.hot) {
-
-  module.hot.accept('router', () => {
-    // Get the updated code
-    renderRouter(require('./router').default)
+// @ts-ignore
+if (module && module.hot) {
+  // @ts-ignore
+  module.hot.accept('./router', () => {
+    renderRouter(require('./router/index').default)
   })
 }
 
-renderRouter(Layout)
+renderRouter(ReactRouter)

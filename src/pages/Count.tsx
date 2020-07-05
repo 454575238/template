@@ -1,16 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import './Count.less'
 
-class Count extends Component {
-  render() {
-    return (
-      <div className="count-container">
-        <span>
-          count
-        </span>
-      </div>
-    )
-  }
+export default function Count() {
+  return (
+    <div>
+      <div>count</div>
+    </div>
+  )
 }
-
-export default Count
