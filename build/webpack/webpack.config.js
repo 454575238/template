@@ -1,19 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
-const resolve = require('./utils')
-const HappyPack = require('happypack')
-const os = require('os')
+const { resolve, createHappyPlugin } = require('./utils')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-const happyPackThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 const chalk = require('chalk')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
-
-const createHappyPlugin = (id, loaders) =>
-  new HappyPack({
-    id: id,
-    loaders: loaders,
-    threadPool: happyPackThreadPool,
-  })
 
 module.exports = {
   entry: {
@@ -84,10 +74,8 @@ module.exports = {
         removeAttributeQuotes: true, //压缩 去掉引号
       },
     }),
-
     new webpack.DefinePlugin({
       'process.env': {
-        VUEP_BASE_URL: JSON.stringify('http://localhost:9000'),
         NODE_ENV: process.env.NODE_ENV,
       },
     }),
@@ -95,7 +83,6 @@ module.exports = {
       title: '编译完成',
       suppressSuccess: true,
     }),
-
     createHappyPlugin('happy-babel', [
       {
         loader: 'babel-loader',
@@ -105,19 +92,16 @@ module.exports = {
         },
       },
     ]),
-
     createHappyPlugin('happy-css', [
       'style-loader',
       'css-loader',
       'postcss-loader',
       'less-loader',
     ]),
-
     new ProgressBarPlugin({
-      format:
-        '  build [:bar] ' +
-        chalk.green.bold(':percent') +
-        ' (:elapsed seconds)',
+      format: `build [:bar] ${chalk.green.bold(
+        ':percent',
+      )}  (:elapsed seconds)`,
       clear: false,
       width: '60',
     }),

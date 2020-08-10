@@ -19,17 +19,11 @@ class Home extends React.Component<IState> {
   }
 
   render() {
-    const { home, value } = this.state
-    console.log(isArray(home))
     return (
       <div>
-        {home}
         <div>
           <input type="text" onChange={this.handleInput} />
-          <img src={require('../assets/micro-bit.png')} />
-          {/* <img src="../assets/micro-bit.png" /> */}
         </div>
-        {value}
       </div>
     )
   }

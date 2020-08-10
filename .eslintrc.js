@@ -38,17 +38,11 @@ module.exports = {
       },
     ],
     'no-console': 'off',
-    'prettier/prettier': 1,
     'prefer-const': [
       'error',
       { destructuring: 'all', ignoreReadBeforeAssign: true },
     ],
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/indent': [
-      'error',
-      2,
-      { VariableDeclarator: 2, SwitchCase: 1 },
-    ],
     '@typescript-eslint/no-unused-vars': 0,
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/interface-name-prefix': 0,

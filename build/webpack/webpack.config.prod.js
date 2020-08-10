@@ -2,7 +2,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const resolve = require('./utils')
+const { resolve } = require('./utils')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {

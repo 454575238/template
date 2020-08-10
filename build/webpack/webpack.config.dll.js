@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const resolve = require('./utils')
+const { resolve } = require('./utils')
 const dllPath = resolve('build/webpack/dll')
 
 module.exports = {

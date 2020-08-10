@@ -1,18 +1,19 @@
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.config')
-const resolve = require('./utils')
+const { resolve } = require('./utils')
 const webpack = require('webpack')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
-const devConf = {
-  host: '0.0.0.0',
-  port: 3012,
-}
+const { devConf } = require('./config')
+
+const { host, port } = devConf
+
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   //environment specific config goes here
   devServer: {
-    ...devConf,
+    host,
+    port,
     hot: true,
     contentBase: resolve('dist'),
     historyApiFallback: true,
@@ -21,7 +22,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     overlay: true,
   },
   devtool: 'cheap-module-source-map',
-
   plugins: [
     new webpack.DllReferencePlugin({
       manifest: require('./dll/vendor.dll.manifest.json'),
@@ -39,9 +39,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: [
-          `你好这里是你的程序地址 : http://${devConf.host}:${devConf.port}`,
-        ],
+        messages: [`你好这里是你的程序地址 : http://${host}:${port}`],
       },
       clearConsole: true,
     }),
