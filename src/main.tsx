@@ -30,10 +30,11 @@ const renderRouter = (Router: () => JSX.Element) => {
     document.getElementById('app'),
   )
 }
-// @ts-ignore
-if (module && module.hot) {
-  // @ts-ignore
-  module.hot.accept('./router', () => {
+
+const hotModule = module as module.HotModule
+
+if (hotModule.hot) {
+  hotModule.hot.accept('./router', () => {
     renderRouter(require('./router/index').default)
   })
 }
