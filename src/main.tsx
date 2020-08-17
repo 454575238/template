@@ -4,7 +4,7 @@ import ReactRouter from './router/index'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import './app.less'
-import { createStore } from './redux/dist'
+import { createStore, Middleware, applyMiddleware, compose } from './redux/dist'
 import { todoApp } from './module/reducers'
 import { Provider } from 'react-redux'
 
@@ -19,7 +19,19 @@ const renderRouter = (Router: () => JSX.Element) => {
     )
   }
 
-  const store = createStore(todoApp)
+  const logger: Middleware = ({ getState, dispatch }) => {
+    console.log(dispatch)
+    const a = dispatch
+    return next => action => {
+      console.log('dispatching', action)
+      console.log(a)
+      const result = next(action)
+      console.log('next state', getState())
+      return result
+    }
+  }
+
+  const store = createStore(todoApp, applyMiddleware(logger))
 
   console.log(store.getState())
 
@@ -31,10 +43,8 @@ const renderRouter = (Router: () => JSX.Element) => {
   )
 }
 
-const hotModule = module as module.HotModule
-
-if (hotModule.hot) {
-  hotModule.hot.accept('./router', () => {
+if (module.hot) {
+  module.hot.accept('./router', () => {
     renderRouter(require('./router/index').default)
   })
 }
