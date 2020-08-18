@@ -20,11 +20,8 @@ const renderRouter = (Router: () => JSX.Element) => {
   }
 
   const logger: Middleware = ({ getState, dispatch }) => {
-    console.log(dispatch)
-    const a = dispatch
     return next => action => {
       console.log('dispatching', action)
-      console.log(a)
       const result = next(action)
       console.log('next state', getState())
       return result
@@ -43,10 +40,8 @@ const renderRouter = (Router: () => JSX.Element) => {
   )
 }
 
-if (module.hot) {
-  module.hot.accept('./router', () => {
-    renderRouter(require('./router/index').default)
-  })
-}
+module?.hot.accept('./router', () => {
+  renderRouter(require('./router/index').default)
+})
 
 renderRouter(ReactRouter)

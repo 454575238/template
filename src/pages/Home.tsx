@@ -1,11 +1,10 @@
-import React from 'react'
-import { isArray } from 'lodash'
-interface IState {
+import React, { PureComponent } from 'react'
+interface IHomeState {
   home: string
   value: string
 }
 
-class Home extends React.Component<IState> {
+class Home extends PureComponent<IHomeState> {
   state = {
     home: 'hom',
     value: '213',
@@ -23,6 +22,7 @@ class Home extends React.Component<IState> {
       <div>
         <div>
           <input type="text" onChange={this.handleInput} />
+          {this.state.home}
         </div>
       </div>
     )

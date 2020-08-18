@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React from 'react'
 import './Count.less'
 import { VisibleTodoList } from '@/containers/visible-todo-list'
 import { Footer } from '@/components/footer'
