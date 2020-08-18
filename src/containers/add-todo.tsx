@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '@/module/actions'
 import { Dispatch } from '@/redux/dist'
 
-const Add = ({ dispatch }: { dispatch: Dispatch }) => {
+const Add: FC<{ dispatch: Dispatch }> = ({ dispatch }) => {
   let input: {
     value: string
   }

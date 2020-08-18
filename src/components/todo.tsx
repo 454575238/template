@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 interface ITodoProps {
   onClick(): void
@@ -6,7 +6,7 @@ interface ITodoProps {
   text: string
 }
 
-export const Todo = ({ onClick, completed, text }: ITodoProps) => (
+export const Todo: FC<ITodoProps> = ({ onClick, completed, text }) => (
   <li
     onClick={onClick}
     style={{

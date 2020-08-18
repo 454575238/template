@@ -55,6 +55,7 @@ module.exports = {
       { path: 'always', types: 'never', lib: 'never' },
     ],
     // React相关校验规则
+    'react/prop-types': ['off'],
     'react/jsx-indent': [2, 2],
     'react/jsx-no-undef': [2, { allowGlobals: true }],
     'jsx-control-statements/jsx-use-if-tag': 0,

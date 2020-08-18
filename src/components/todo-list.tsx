@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Todo } from './todo'
 
 interface ITodoList {
@@ -7,7 +7,7 @@ interface ITodoList {
   lie: number
 }
 
-export const TodoList = ({ todos, onTodoClick }: ITodoList) => (
+export const TodoList: FC<ITodoList> = ({ todos, onTodoClick }) => (
   <ul>
     {todos.map(todo => (
       <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />

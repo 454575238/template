@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 interface ILinkProps {
   active: boolean
@@ -6,7 +6,7 @@ interface ILinkProps {
   onClick(): void
 }
 
-export const Link = ({ active, children, onClick }: ILinkProps) => {
+export const Link: FC<ILinkProps> = ({ active, children, onClick }) => {
   if (active) {
     return <span>{children}</span>
   }

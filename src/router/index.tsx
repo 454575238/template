@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
 
-import Home from '@/pages/Home'
-import Count from '@/pages/Count'
+import Home from '@/pages/home'
+import Count from '@/pages/count'
 const Router = () => (
   <div className="layout">
     <header>

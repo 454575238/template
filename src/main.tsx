@@ -28,7 +28,11 @@ const renderRouter = (Router: () => JSX.Element) => {
     }
   }
 
-  const store = createStore(todoApp, applyMiddleware(logger))
+  const store = createStore(
+    todoApp,
+    { todos: [{ id: 1, text: '2', completed: true }] },
+    applyMiddleware(logger),
+  )
 
   console.log(store.getState())
 
