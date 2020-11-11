@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import ReactRouter from './router/index'
 import ReactDOM from 'react-dom'
@@ -8,8 +8,8 @@ import { createStore, Middleware, applyMiddleware, compose } from './redux/dist'
 import { todoApp } from './module/reducers'
 import { Provider } from 'react-redux'
 
-const renderRouter = (Router: () => JSX.Element) => {
-  const App = () => {
+const renderRouter = (Router: FC) => {
+  const App: FC = () => {
     return (
       <AppContainer>
         <BrowserRouter basename="/">
@@ -34,6 +34,11 @@ const renderRouter = (Router: () => JSX.Element) => {
     applyMiddleware(logger),
   )
 
+  const unsubscribe = store.subscribe(() => {
+    console.log('subscribe')
+  })
+
+  unsubscribe()
   console.log(store.getState())
 
   ReactDOM.render(

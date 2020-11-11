@@ -12,6 +12,11 @@ import { Dispatch } from './types/store'
  * every action creator wrapped into the `dispatch` call. If you passed a
  * function as `actionCreators`, the return value will also be a single
  * function.
+ *
+ * @example
+ * const addTodo = (text) => ({ type: ADD_TODO, value: text })
+ * const addTodoBindDispatch = bindActionCreators(addTodo, store.dispatch);
+ * addTodoBindDispatch('text')
  */
 declare function bindActionCreators<A, C extends ActionCreator<A>>(
   actionCreator: C,
