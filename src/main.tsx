@@ -12,7 +12,7 @@ const renderRouter = (Router: FC) => {
   const App: FC = () => {
     return (
       <AppContainer>
-        <BrowserRouter basename="/">
+        <BrowserRouter>
           <Router />
         </BrowserRouter>
       </AppContainer>

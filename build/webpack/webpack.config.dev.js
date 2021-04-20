@@ -29,7 +29,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new AddAssetHtmlPlugin([
       {
         // 往html中注入dll js
-        publicPath: './dll', // 注入到html中的路径
+        publicPath: '/dll', // 注入到html中的路径
         outputPath: 'dll', // 最终输出的目录
         filepath: resolve('build/webpack/dll/*.js'),
         includeSourcemap: false,
