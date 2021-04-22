@@ -17,7 +17,7 @@ const getVisibleTodos = (todos: { completed: boolean }[], filter: string) => {
 
 const mapStateToProps: MapStateToProps<
   { todos: { completed: boolean }[] }, // 映射到 TodoList 中的 props
-  {}, // 为 TodoList 增强新 props
+  any, // 为 TodoList 增强新 props
   { todos: []; visibilityFilter: string } //映射到 state 的 state
 > = state => {
   return {
@@ -27,7 +27,7 @@ const mapStateToProps: MapStateToProps<
 
 const mapDispatchToProps: MapDispatchToProps<
   { onTodoClick(id: number): void },
-  {}
+  any
 > = dispatch => {
   return {
     onTodoClick: id => {

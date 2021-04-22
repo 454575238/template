@@ -3,33 +3,30 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     'plugin:react/recommended',
-    'plugin:jsx-control-statements/recommended',
-    'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-    'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
-    'prettier/react',
+    'plugin:prettier/recommended',
   ],
   settings: {
     react: {
       version: 'detect',
     },
   },
-  plugins: [
-    '@typescript-eslint',
-    'react',
-    'jsx-control-statements',
-    'prettier',
-  ],
+  plugins: ['react', 'react-hooks', 'jsx-control-statements', 'prettier'],
   env: {
     browser: true,
     node: true,
     es6: true,
     mocha: true,
+    commonjs: true,
     'jsx-control-statements/jsx-control-statements': true,
   },
-  globals: {
-    $: true,
-  },
   rules: {
+    'prettier/prettier': [
+      'error',
+      {},
+      {
+        usePrettierrc: true,
+      },
+    ],
     '@typescript-eslint/explicit-function-return-type': [
       'off',
       {
@@ -50,6 +47,9 @@ module.exports = {
     '@typescript-eslint/no-triple-slash-reference': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/no-this-alias': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/member-delimiter-style': 0,
+    '@typescript-eslint/ban-types': 0,
     '@typescript-eslint/triple-slash-reference': [
       'error',
       { path: 'always', types: 'never', lib: 'never' },
