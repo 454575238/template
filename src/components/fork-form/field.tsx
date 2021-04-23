@@ -1,6 +1,8 @@
 import { PureComponent, ReactElement, ReactNode } from 'react'
 import { FieldContext } from '../from/context'
+import { HOOK_MARK } from './field-context'
 import type {
+  FieldEntity,
   FormInstance,
   InternalFormInstance,
   InternalNamePath,
@@ -104,6 +106,8 @@ class Field extends PureComponent<InternalFieldProps, FieldState> {
   public state = {
     resetCount: 0,
   }
+
+  private mounted = false
   // 只返回需要验证的 子节点 如果不需要验证 就不做任何事情
   // getOnlyChild = (
   //   children: InternalFieldProps['children']
@@ -111,4 +115,13 @@ class Field extends PureComponent<InternalFieldProps, FieldState> {
   //   if(typeof children === 'function') {
 
   //   }
+
+  constructor(props: InternalFieldProps) {
+    super(props)
+    if (props.fieldContext) {
+      const { getInternalHooks }: InternalFormInstance = props.fieldContext
+      const { initEntityValue } = getInternalHooks(HOOK_MARK)
+      initEntityValue((this as unknown) as FieldEntity)
+    }
+  }
 }
