@@ -1,0 +1,6 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+.home-span {
+  font-size: 16px;
+}

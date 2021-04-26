@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import ReactRouter from './router/index'
+import ReactRouter from './App'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import './app.less'
@@ -49,8 +49,8 @@ const renderRouter = (Router: FC) => {
   )
 }
 
-module?.hot.accept('./router', () => {
-  renderRouter(require('./router/index').default)
+module?.hot.accept('./App', () => {
+  renderRouter(require('./App').default)
 })
 
 renderRouter(ReactRouter)

@@ -54,6 +54,7 @@ module.exports = {
       'error',
       { path: 'always', types: 'never', lib: 'never' },
     ],
+    '@typescript-eslint/no-empty-interface': 0,
     // React相关校验规则
     'react/prop-types': ['off'],
     'react/jsx-indent': [2, 2],
