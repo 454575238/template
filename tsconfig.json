@@ -4,13 +4,14 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["es6", "es7", "dom"],
+    "lib": ["es6", "es7", "dom", "ES2015.Collection", "ES2015.Iterable"],
     "outDir": "./dist/",
     "noImplicitAny": true,
     "jsx": "react",
     "allowJs": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true
   },
   "exclude": ["node_modules", "dist", "build"]
 }

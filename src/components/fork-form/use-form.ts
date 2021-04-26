@@ -131,6 +131,45 @@ export class FormStore {
     const namePath = getNamePath(name)
     return getValue(this.store, namePath)
   }
+
+  // =============== Observer ==================
+  /**
+   * This only trigger when a field is on constructor to avoid we get initialValue too late
+   */
+  private initEntityValue = (entity: FieldEntity) => {
+    const { initialValue } = entity.props
+
+    if (initialValue) {
+      const namePath = entity.getNamePath()
+      const prevValue = getValue(this.store, namePath)
+
+      if (!prevValue) {
+        this.store = setValue(this.store, namePath, initialValue)
+      }
+    }
+  }
+
+  private registerField = (entity: FieldEntity) => {
+    this.fieldEntities.push(entity)
+
+    // set initial values
+    if (entity.props.initialValue) {
+    }
+  }
+
+  /**
+   * Reset Field with field `initialValue` prop
+   * Can pass `entities` or `namePathList` or just nothing
+   */
+  private resetWithFieldInitialValue = (info: {
+    entities?: FieldEntity[]
+    namePathList?: InternalNamePath[]
+    /** Skip reset if store exist value. This is only used for field register reset */
+    skipExist?: boolean
+  }) => {
+    // Create cache
+    // const cache: NameMap // TODO ..
+  }
 }
 
 const useForm = <Values = any>(
