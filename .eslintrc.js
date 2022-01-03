@@ -3,6 +3,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
     'plugin:prettier/recommended',
   ],
   settings: {
@@ -10,7 +11,12 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: ['react', 'react-hooks', 'jsx-control-statements', 'prettier'],
+  plugins: [
+    'react',
+    'react-hooks',
+    'jsx-control-statements',
+    'prettier',
+  ],
   env: {
     browser: true,
     node: true,

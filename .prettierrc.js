@@ -7,6 +7,5 @@ module.exports = {
   jsxBracketSameLine: false, // 将>多行JSX元素放在最后一行的末尾，而不是单独放在下一行
   arrowParens: 'avoid', // 在单个箭头函数参数周围加上括号<avoid|always>
   requirePragma: false,
-  proseWrap: 'preserve',
   parser: 'typescript'
 }

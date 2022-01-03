@@ -121,7 +121,7 @@ class Field extends PureComponent<InternalFieldProps, FieldState> {
     if (props.fieldContext) {
       const { getInternalHooks }: InternalFormInstance = props.fieldContext
       const { initEntityValue } = getInternalHooks(HOOK_MARK)
-      initEntityValue((this as unknown) as FieldEntity)
+      initEntityValue(this as unknown as FieldEntity)
     }
   }
 }

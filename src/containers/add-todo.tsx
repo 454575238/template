@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '@/module/actions'
 import { Dispatch } from '@/redux/dist'

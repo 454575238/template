@@ -38,11 +38,11 @@ export function setValue(
  */
 function internalSetValues<
   T extends Record<any, any>,
-  U extends Record<any, any>
+  U extends Record<any, any>,
 >(store: T, values: U): CombineObjects<T, U> {
-  const cloneStore = (isArray(store)
-    ? [...store]
-    : { ...store }) as CombineObjects<T, U>
+  const cloneStore = (
+    isArray(store) ? [...store] : { ...store }
+  ) as CombineObjects<T, U>
 
   if (!values) return cloneStore
 

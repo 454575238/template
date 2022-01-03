@@ -1,7 +1,8 @@
 import FormWithRef from '@/components/from/Form'
+import { VirtualList } from '@/components/virtual-list'
 import { Form, Input } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
-import React, { ChangeEvent, FC, useRef, useState } from 'react'
+import { ChangeEvent, FC, useRef, useState } from 'react'
 
 const Test: FC<{ value?: any; onChange?: any }> = props => {
   const { value, onChange } = props
@@ -13,8 +14,9 @@ const Test: FC<{ value?: any; onChange?: any }> = props => {
   // const onClick = () => {}
   return (
     <div>
-      <Input value={value} onChange={onInputChange}></Input>
+      {/* <Input value={value} onChange={onInputChange}></Input> */}
       {/* <button onClick={onClick}>btn</button> */}
+      <VirtualList />
     </div>
   )
 }
@@ -23,7 +25,7 @@ const Test: FC<{ value?: any; onChange?: any }> = props => {
 
 const Home: FC = () => {
   const [value, setValue] = useState<string>()
-  const form = useRef()
+  const [form] = useForm()
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
@@ -32,22 +34,22 @@ const Home: FC = () => {
   }
 
   const onClick = () => {
-    console.log(form.current.getFieldsValue())
+    console.log(form.getFieldsValue())
   }
 
   return (
     <>
       <input type="text" onChange={handleInput} />
       {value}
-      <FormWithRef ref={form} initialValues={{ test: 2234, text2: 222 }}>
+      {/* <FormWithRef ref={form} initialValues={{ test: 2234, text2: 222 }}>
         <FormWithRef.Item name="test">
           <Test />
         </FormWithRef.Item>
         <FormWithRef.Item name="test1">
           <Test />
-        </FormWithRef.Item>
-        <button onClick={onClick}>btn</button>
-      </FormWithRef>
+        </FormWithRef.Item> */}
+      <button onClick={onClick}>btn</button>
+      {/* </FormWithRef> */}
     </>
   )
 }

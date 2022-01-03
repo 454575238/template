@@ -32,7 +32,7 @@ function internalSet<Entity = any, Output = Entity, Value = any>(
   value: Value,
   removeIfUndefined: boolean,
 ): Output {
-  if (!paths.length) return (value as unknown) as Output
+  if (!paths.length) return value as unknown as Output
 
   const [path, ...restPath] = paths
   let clone: Record<typeof path, any>

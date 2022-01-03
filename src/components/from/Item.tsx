@@ -20,9 +20,8 @@ interface FormItemProps {
 const Item: FC<FormItemProps> = props => {
   const { name, children } = props
   const currentItemId = useRef<string>()
-  const { getFieldValue, onTriggerChange, initFields } = useContext(
-    FieldContext,
-  )
+  const { getFieldValue, onTriggerChange, initFields } =
+    useContext(FieldContext)
 
   useEffect(() => {
     currentItemId.current = uniqueId(name)
