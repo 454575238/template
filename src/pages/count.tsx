@@ -1,4 +1,3 @@
-import React from 'react'
 import { VisibleTodoList } from '@/containers/visible-todo-list'
 import { Footer } from '@/components/footer'
 import { AddTodo } from '@/containers/add-todo'

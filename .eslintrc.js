@@ -11,12 +11,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: [
-    'react',
-    'react-hooks',
-    'jsx-control-statements',
-    'prettier',
-  ],
+  plugins: ['react', 'react-hooks', 'jsx-control-statements', 'prettier'],
   env: {
     browser: true,
     node: true,

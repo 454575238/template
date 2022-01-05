@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import ReactRouter from './router/index'
 import ReactDOM from 'react-dom'
@@ -30,7 +30,7 @@ const renderRouter = (Router: FC) => {
 
   const store = createStore(
     todoApp,
-    { todos: [{ id: 1, text: '2', completed: true }] },
+    { todos: [{ id: 1000, text: '2', completed: true }] },
     applyMiddleware(logger),
   )
 

@@ -1,5 +1,5 @@
 import { uniqueId } from 'lodash'
-import React, {
+import {
   Children,
   FC,
   ReactElement,

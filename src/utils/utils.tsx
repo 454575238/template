@@ -1,4 +1,4 @@
-import React from 'react'
+import { createElement } from 'react'
 import { render, createPortal } from 'react-dom'
 import Home from '@/pages/Home'
 interface IParams {
@@ -27,7 +27,7 @@ class Axios {
 
   get(com: unknown) {
     console.log('loading')
-    const Load = React.createElement('div', { loading: false }, 235)
+    const Load = createElement('div', { loading: false }, 235)
     const div = document.createElement('div')
     render(Load, div)
     document.body.append(div)

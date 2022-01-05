@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { FilterLink } from '../containers/filter-link'
 
 export const Footer: FC = () => (
