@@ -1,9 +1,9 @@
 import FormWithRef from '@/components/from/Form'
 import VirtualList from '@/components/virtual-list'
 import { Form, Input } from 'antd'
-import { useForm } from 'antd/lib/form/Form'
 import { ChangeEvent, FC, useRef, useState } from 'react'
 
+const { useForm } = Form
 const Test: FC<{ value?: any; onChange?: any }> = props => {
   const { value, onChange } = props
   console.log(value)

@@ -22,7 +22,7 @@ module.exports = {
       name: '_dll_[name]',
       // manifest.json 描述动态链接库包含了哪些内容
       path: resolve('build/webpack/dll/[name].dll.manifest.json'),
-      context: resolve('/'),
+      context: resolve(''),
     }),
   ],
 }
